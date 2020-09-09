@@ -12,9 +12,22 @@ namespace HelloWorld
         int _playerDamage = 200000;
         int _playerDefense = 10;
         int levelScaleMax = 5;
+        Random random;
         //Run the game
         public void Run()
         {
+            random = new Random();
+            int randomNumber = random.Next(0, 1);
+
+            if (randomNumber == 0)
+            {
+                //murder player
+            }
+            else
+            {
+                //Heal plz player
+            }
+
             Start();
 
             while (_gameOver == false)
@@ -125,7 +138,6 @@ namespace HelloWorld
 
         void UpgradeStats(int turnCount)
         {
-            //Subtract the amount of turns from our maximum level scale to get our current level scale
             int scale = levelScaleMax - turnCount;
             if (scale <= 0)
             {
@@ -184,27 +196,28 @@ namespace HelloWorld
             {
                 case 0:
                     {
-                        Console.WriteLine("A wizard blocks your path");
+                        Console.WriteLine("A disgraced wizard with aura of dark magic blocks your path");
                         break;
                     }
                 case 1:
                     {
-                        Console.WriteLine("Wizard has defeated!");
+                        Console.WriteLine("Wizard was defeated but, he casted himself teleport to somewhere for fleeing from you.");
                         Console.WriteLine("");
                         Console.WriteLine("");
-                        Console.WriteLine("A troll stands before you");
+                        Console.WriteLine("A random troll stands before you");
                         break;
                     }
                 case 2:
                     {
-                        Console.WriteLine("Troll has defeated!");
+                        Console.WriteLine("Troll was trolled by you");
                         Console.WriteLine("");
                         Console.WriteLine("");
-                        Console.WriteLine("A giant has appeared!");
+                        Console.WriteLine("A half-naked azetic giant stripper has appeared!");
                         break;
                     }
                 default:
                     {
+                        Console.WriteLine("You sent giant car to space.");
                         _gameOver = true;
                         return;
                     }
@@ -212,7 +225,7 @@ namespace HelloWorld
             int turnCount = 0;
             //Starts a battle. If the player survived the battle, level them up and then proceed to the next room.
             if (StartBattle(roomNum, ref turnCount))
-            { 
+            {
                 UpgradeStats(turnCount);
                 ClimbLadder(roomNum + 1);
                 Console.Clear();
@@ -231,8 +244,14 @@ namespace HelloWorld
                 //Prints options
                 Console.WriteLine("Welcome! Please select a character.");
                 Console.WriteLine("1.Sir Kibble");
+                Console.WriteLine("Sir Kibble is from noble house called Griffin for bodyguard of Royalty. Griffin's founder was legendary knight who");
+                Console.WriteLine("protected his kingdom multiple and saved a lot Royalty's life. But, Griffin dislike politic and was exiled by greedy and arrogant Royalty");
+                Console.WriteLine("");
                 Console.WriteLine("2.Gnojoel");
+                Console.WriteLine("Gnojoel is mage who bears blood magic from his family and running away from Templer, knight who kill or safeguard mage for fearing magic corruption. Gnojoel wasn't corrupted by blood magic. Gnojoel is such greedy mage. Not money. Not fame. Not glory. Just knowledge for sasifty his curiousity.");
                 Console.WriteLine("3.Joedazz");
+                Console.WriteLine("Joedazz's race is elves who were enslaved by human and now lower rank is commoner. Human looked down and treat elves as trash. Joedazz's bloodline was legendary Reavor, a warrior who devor blood and flesh for healing his flesh. Joedazz was declared crimenal by noble. because Joedazz killed noble's son. Joedazz killed noble's son for saving Joedazz's sister  because noble's son tried kill her for his pleasure. Joedazz has no place in this city and have no choice but leave city.");
+                Console.WriteLine("");
                 Console.Write("> ");
                 input = Console.ReadKey().KeyChar;
                 //Sets the players default stats based on which character was picked
